@@ -42,6 +42,17 @@ export function userExists(data: { username: string; email: string }) {
   const users = getUsersFromLocalStorage();
   return users.some(
     (user: { username: string; email: string }) =>
+      user.username === data.username && user.email === data.email
+  );
+}
+
+export function usernameOrEmailExists(data: {
+  username: string;
+  email: string;
+}) {
+  const users = getUsersFromLocalStorage();
+  return users.some(
+    (user: { username: string; email: string }) =>
       user.username === data.username || user.email === data.email
   );
 }

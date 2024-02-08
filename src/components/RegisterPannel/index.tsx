@@ -15,34 +15,30 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter, usePathname } from "next/navigation";
-import { formSchema } from "./validation";
+import { useRouter } from "next/navigation";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
+import { formSchema } from "./validation";
 
-function LoginPannel() {
+function RegisterPannel() {
   const router = useRouter();
-  const pathName = usePathname();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
       email: "",
+      repeatEmail: "",
     },
   });
 
   const { setError } = form;
-  const { onSubmit } = useFormSubmit({
-    formSchema,
-    router,
-    setError,
-    pathName,
-  });
+
+  const { onSubmit } = useFormSubmit({ formSchema, router, setError });
 
   return (
     <Form {...form}>
       <div className="flex flex-col w-full items-center h-screen justify-evenly">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          Login
+          Cadastrar
         </h1>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -58,7 +54,7 @@ function LoginPannel() {
                   <Input placeholder="username" {...field} />
                 </FormControl>
                 <FormDescription>
-                  Username utilizado no seu cadastro.
+                  Este será o nome mostrado no seu perfil.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -74,16 +70,30 @@ function LoginPannel() {
                   <Input placeholder="email" {...field} />
                 </FormControl>
                 <FormDescription>
-                  Email utilizado no seu cadastro.
+                  Este email será usado para entrar na sua conta.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="repeatEmail"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirmar Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="email" {...field} />
+                </FormControl>
+                <FormDescription>Digite novamente seu email.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <div className="flex gap-2">
-            <Button type="submit">Entrar</Button>
-            <Button type="button" onClick={() => router.push("/register")}>
-              Cadastrar
+            <Button type="submit">Cadastrar</Button>
+            <Button type="button" onClick={() => router.push("/login")}>
+              Login
             </Button>
           </div>
         </form>
@@ -92,4 +102,4 @@ function LoginPannel() {
   );
 }
 
-export default LoginPannel;
+export default RegisterPannel;
