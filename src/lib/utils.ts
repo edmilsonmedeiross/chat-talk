@@ -1,28 +1,13 @@
 import { type ClassValue, clsx } from "clsx";
+
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function setUserToLocalStorage(user: {
-  username: string;
-  email: string;
-}) {
-  localStorage.setItem("user", JSON.stringify(user));
-}
-
-export function getUserFromLocalStorage() {
-  const user = localStorage.getItem("user");
-  return user ? JSON.parse(user) : null;
-}
-
 export function removeUserFromLocalStorage() {
   localStorage.removeItem("user");
-}
-
-export function isUserLoggedIn() {
-  return !!getUserFromLocalStorage();
 }
 
 export function getUsersFromLocalStorage() {
@@ -55,4 +40,15 @@ export function usernameOrEmailExists(data: {
     (user: { username: string; email: string }) =>
       user.username === data.username || user.email === data.email
   );
+}
+
+export function getRoomsToLocalStorage(data: any) {
+  const rooms = localStorage.getItem("rooms");
+  return rooms
+    ? JSON.parse(rooms)
+    : localStorage.setItem("rooms", JSON.stringify(data));
+}
+
+export function setRoomsToLocalStorage(data: any) {
+  localStorage.setItem("rooms", JSON.stringify(data));
 }
