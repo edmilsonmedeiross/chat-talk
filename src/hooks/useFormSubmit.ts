@@ -8,6 +8,7 @@ import {
   setUsersToLocalStorage,
 } from "@/lib/utils";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { handleLogin } from "@/app/actions";
 
 type FormValues = {
   username: string;
@@ -85,7 +86,7 @@ export const useFormSubmit = ({
 
         return;
       }
-
+      handleLogin(values);
       router.push("/");
     }
   };
