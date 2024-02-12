@@ -1,4 +1,12 @@
 import { useRouter } from "next/navigation";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 function ConfirmationModal({ isOpen, onClose, room }) {
   const router = useRouter();
@@ -14,16 +22,21 @@ function ConfirmationModal({ isOpen, onClose, room }) {
   };
 
   return isOpen ? (
-    <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center">
-      <div className="bg-white p-4 rounded-lg shadow">
+    <Card>
+      <CardContent>
+        <CardDescription>
+          Essa sala é privada, por favor, insira a senha para acessar.
+        </CardDescription>
         <form onSubmit={handleSubmit}>
           <label htmlFor="password">Senha:</label>
           <input id="password" name="password" type="password" />
           <button type="submit">Entrar</button>
         </form>
+      </CardContent>
+      <CardFooter>
         <button onClick={onClose}>Fechar</button>
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   ) : null;
 }
 
