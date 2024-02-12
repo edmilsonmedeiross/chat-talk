@@ -11,9 +11,8 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { Checkbox } from "@/components/ui/checkbox";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "../ui/input";
@@ -50,7 +49,7 @@ function CreateRoom({ setRooms, roomsToRender }: any) {
   return (
     <Popover>
       <PopoverTrigger>
-        <Button>Adicionar sala</Button>
+        <Button variant={"default"}>Nova sala</Button>
       </PopoverTrigger>
       <PopoverContent>
         <Form {...form}>
