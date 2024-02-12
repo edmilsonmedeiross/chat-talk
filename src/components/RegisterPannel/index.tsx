@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import { formSchema } from "./validation";
 
@@ -31,8 +31,14 @@ function RegisterPannel() {
   });
 
   const { setError } = form;
+  const pathName = usePathname();
 
-  const { onSubmit } = useFormSubmit({ formSchema, router, setError });
+  const { onSubmit } = useFormSubmit({
+    formSchema,
+    router,
+    setError,
+    pathName,
+  });
 
   return (
     <Form {...form}>
