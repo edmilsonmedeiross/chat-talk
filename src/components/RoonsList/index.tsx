@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { redirect, useRouter } from "next/navigation";
 import CreateRoom from "../CreateRoom";
@@ -10,14 +10,12 @@ import ConfirmationModal from "../ConfirmationModal";
 
 interface Props {
   rooms: any[];
+  setRooms: (rooms: any[]) => void;
 }
 
-function RoonsList({ rooms }: Props) {
+function RoonsList({ rooms, setRooms }: Props) {
   const router = useRouter();
   const [selectedRoom, setSelectedRoom] = useState(null);
-  const [roomsToRender, setRooms] = useState<any[]>(
-    getRoomsToLocalStorage(rooms)
-  );
 
   const handleRoomClick = (room) => {
     if (room.isPrivate) {
@@ -28,19 +26,18 @@ function RoonsList({ rooms }: Props) {
   };
 
   return (
-    <div className="flex flex-col gap-3 w-screen max-w-72">
-      <h2>Salas</h2>
-      <nav className="flex flex-col gap-3 w-screen max-w-72">
-        {roomsToRender.map((room) => (
-          <>
-            <Button
-              key={room.id}
-              onClick={() => handleRoomClick(room)}
-              className="flex gap-3 items-center justify-center"
-            >
-              {room.name} {room.isPrivate && <FaLock />}
-            </Button>
-          </>
+    <aside className="flex flex-col items-center justify-between p-4 gap-3 w-full max-w-72 h-full bg-[#619ee2]">
+      <h2 className="m-4 font-semibold">Salas</h2>
+      <nav className="flex flex-col gap-3 w-full max-w-72">
+        {rooms?.map((room) => (
+          <Button
+            variant={"default"}
+            key={room.id}
+            onClick={() => handleRoomClick(room)}
+            className="flex gap-3 items-center justify-center bg-green-800"
+          >
+            {room.name} {room.isPrivate && <FaLock />}
+          </Button>
         ))}
       </nav>
       {selectedRoom && (
@@ -50,8 +47,9 @@ function RoonsList({ rooms }: Props) {
           room={selectedRoom}
         />
       )}
-      <CreateRoom setRooms={setRooms} roomsToRender={roomsToRender} />
-    </div>
+
+      <CreateRoom setRooms={setRooms} roomsToRender={rooms} />
+    </aside>
   );
 }
 

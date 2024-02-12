@@ -1,5 +1,7 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import RoonsList from "../RoonsList";
+import { getRoomsToLocalStorage } from "@/lib/utils";
 
 const chatData = [
   {
@@ -18,7 +20,13 @@ const chatData = [
 ];
 
 function SideBar() {
-  return <RoonsList rooms={chatData} />;
+  const [roomsToRender, setRooms] = useState<any[]>(chatData);
+
+  useEffect(() => {
+    setRooms(getRoomsToLocalStorage(chatData));
+  }, []);
+
+  return <RoonsList rooms={roomsToRender} setRooms={setRooms} />;
 }
 
 export default SideBar;
