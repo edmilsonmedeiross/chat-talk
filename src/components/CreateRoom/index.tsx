@@ -1,13 +1,6 @@
 "use client";
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -21,9 +14,7 @@ import {
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -94,8 +85,6 @@ function CreateRoom({ setRooms, roomsToRender }: any) {
       newRoom.password = data.password;
     }
 
-    console.log(newRoom);
-
     setRooms([...roomsToRender, newRoom]);
     setRoomsToLocalStorage([...roomsToRender, newRoom]);
     form.reset();
@@ -105,7 +94,7 @@ function CreateRoom({ setRooms, roomsToRender }: any) {
   const { watch } = form;
 
   return (
-    <Card className="absolute top-1/3 left-1/3 flex flex-col gap-2 z-50 max-md:top-1/3 max-md:left-auto max-md:w-full">
+    <Card className="absolute top-1/3 left-1/3 flex flex-col gap-2 z-50 max-md:top-1/3 max-md:left-1/4 max-md:w-3/5 max-sm:left-4 max-sm:w-11/12">
       <CardHeader>
         <CardTitle>Criar nova sala</CardTitle>
       </CardHeader>

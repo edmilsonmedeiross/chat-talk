@@ -86,13 +86,24 @@ function RoonsList() {
               room={selectedRoom}
             />
           )}
-          <Button
-            className="absolute bottom-4"
-            variant={"default"}
-            onClick={() => setIsCreating(!isCreating)}
-          >
-            Nova Sala
-          </Button>
+          <div className="absolute bottom-4 flex gap-4">
+            <Button
+              variant={"default"}
+              onClick={() => setIsCreating(!isCreating)}
+            >
+              Nova Sala
+            </Button>
+            <Button
+              className="font-semibold text-base"
+              variant={"link"}
+              onClick={() => {
+                router.push("/");
+                setIsCreating(!isCreating);
+              }}
+            >
+              Home
+            </Button>
+          </div>
           <IoClose
             onClick={() => {
               setIsMobile(false);

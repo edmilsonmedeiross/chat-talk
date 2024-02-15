@@ -7,9 +7,11 @@ import Footer from "@/components/Footer";
 
 export default async function Home() {
   const sessionData = await getSessionData();
+
   if (!sessionData) {
     redirect("/login");
   }
+
   return (
     <div>
       <Header />

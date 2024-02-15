@@ -4,7 +4,7 @@ import { IoCodeSlash } from "react-icons/io5";
 
 function Footer() {
   return (
-    <footer className="flex items-center gap-2 justify-center w-full h-20 bg-[#181d2a]">
+    <footer className="flex items-center gap-2 justify-center w-full h-20 bg-[#181d2a] max-sm:text-xs max-sm:p-2 max-sm:flex-col">
       <h1 className="flex items-center text-white">
         Desenvolvido com amor por{" "}
       </h1>

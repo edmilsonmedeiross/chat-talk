@@ -1,6 +1,6 @@
 "use client";
 import { getRoomsToLocalStorage } from "@/lib/utils";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export type Room = {
   id: string;
@@ -32,9 +32,14 @@ export function useRoomsContext() {
 }
 
 export function RoomsProvider({ children }: { children: React.ReactNode }) {
-  const [rooms, setRooms] = useState<RoomsContextType>(
-    getRoomsToLocalStorage(chatData)
-  );
+  const [rooms, setRooms] = useState<Room[]>(chatData as Room[]);
+
+  useEffect(() => {
+    const rooms = getRoomsToLocalStorage(chatData);
+    if (rooms) {
+      setRooms(rooms);
+    }
+  }, []);
 
   return (
     <RoomsContext.Provider value={{ rooms, setRooms }}>

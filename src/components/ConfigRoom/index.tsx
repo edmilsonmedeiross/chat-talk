@@ -7,12 +7,7 @@ import { RoomsContextType, useRoomsContext } from "@/contexts/RoomsContext";
 import { setRoomsToLocalStorage } from "@/lib/utils";
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -104,7 +99,7 @@ function ConfigRoom({ id }: { id: string }) {
   return (
     <>
       {isUpdate && (
-        <Card className="absolute w-full max-w-md bottom-1/3 left-1/4 p-2 max-md:w-full max-md:top-auto max-md:left-auto">
+        <Card className="absolute w-full max-w-md bottom-1/3 left-1/4 p-2 max-md:w-full max-sm:max-w-72 max-md:top-auto max-md:left-auto bg-gray-300">
           <CardContent>
             <CardDescription className="m-3 text-center">
               Configurações da Sala
@@ -150,21 +145,23 @@ function ConfigRoom({ id }: { id: string }) {
                     </FormItem>
                   )}
                 />
-                {isPrivate && (
-                  <FormField
-                    control={form.control}
-                    name="roomPassword"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Senha da Sala</FormLabel>
-                        <FormControl>
-                          <Input type="password" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                )}
+                <div className="max-sm:w-full">
+                  {isPrivate && (
+                    <FormField
+                      control={form.control}
+                      name="roomPassword"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Senha da Sala</FormLabel>
+                          <FormControl>
+                            <Input type="password" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  )}
+                </div>
                 <div className="flex mt-3">
                   <Button type="submit">Salvar</Button>
                   <Button variant={"link"} onClick={() => setIsUpdate(false)}>

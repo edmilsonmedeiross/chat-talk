@@ -64,7 +64,7 @@ function ConfirmationModal({ isOpen, onClose, room }: ConfirmationModalProps) {
   };
 
   return isOpen ? (
-    <Card className="absolute bottom-1/3 left-1/4 p-2 max-md:w-full max-md:top-auto max-md:left-auto max-md:mx-4">
+    <Card className="absolute bottom-1/3 left-1/4 p-2 max-md:w-full max-md:top-auto max-md:left-auto max-md:max-w-80">
       <CardContent>
         <CardDescription className="m-3">
           Essa sala é privada, por favor, insira a senha para acessar.

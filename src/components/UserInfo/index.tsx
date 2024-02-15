@@ -14,9 +14,9 @@ async function UserInfo() {
           <FaUser size={60} />
         </AvatarFallback>
       </Avatar>
-      <h1 className="text-3xl">
+      <h1 className="text-3xl max-md:text-xl max-sm:text-sm">
         Bem Vindo ao{" "}
-        <span className="font-extrabold text-3xl">
+        <span className="font-extrabold text-3xl max-md:text-xl max-sm:text-sm">
           <span className="font-extrabold text-green-600">Chat</span>-
           <span className="font-extrabold text-purple-600">Talk</span>
         </span>{" "}

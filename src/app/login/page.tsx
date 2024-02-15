@@ -8,6 +8,7 @@ async function Login() {
   if (session) {
     return redirect("/");
   }
+
   return <LoginPannel />;
 }
 

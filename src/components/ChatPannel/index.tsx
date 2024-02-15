@@ -55,7 +55,7 @@ function ChatPannel({ user }: UserProps): JSX.Element {
   };
 
   return (
-    <div className="flex flex-col p-4 justify-between w-full max-w-96 h-full max-h-96 border-2 overflow-auto rounded-lg">
+    <div className="flex flex-col p-4 justify-between w-full max-w-96 h-full max-h-96 border-2 overflow-auto rounded-lg max-sm:max-w-64">
       {messages.length > 0 ? (
         messages.map((message, index) => (
           <div key={index} className="mb-6 bg-slate-300 p-2 rounded-xl">
@@ -74,13 +74,13 @@ function ChatPannel({ user }: UserProps): JSX.Element {
         </div>
       )}
       <form
-        className="flex justify-between p-2"
+        className="flex justify-between p-2 max-sm:gap-2"
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
           type="text"
           placeholder="Digite sua mensagem"
-          className="custom-input border-none border-b border-gray-300 focus:border-gray-500 focus:ring-0"
+          className="custom-input border-none border-b border-gray-300 focus:border-gray-500 focus:ring-0 max-sm:w-44 max-sm:text-sm"
           {...register("message")}
         />
         <button type="submit" className="flex justify-center items-center">
