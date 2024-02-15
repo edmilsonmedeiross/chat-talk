@@ -21,6 +21,7 @@ import { useFormSubmit } from "@/hooks/useFormSubmit";
 
 function LoginPannel() {
   const router = useRouter();
+
   const pathName = usePathname();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -41,6 +42,13 @@ function LoginPannel() {
   return (
     <Form {...form}>
       <div className="flex flex-col w-full items-center h-screen justify-evenly">
+        <h1>
+          <span className="font-extrabold text-4xl">
+            <span className="text-green-500">Chat</span>
+            <span>-</span>
+            <span className="text-purple-500">Talk</span>
+          </span>
+        </h1>
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Login
         </h1>
