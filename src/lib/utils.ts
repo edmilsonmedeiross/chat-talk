@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import { get } from "http";
 
 import { twMerge } from "tailwind-merge";
 
@@ -51,4 +52,14 @@ export function getRoomsToLocalStorage(data: any) {
 
 export function setRoomsToLocalStorage(data: any) {
   localStorage.setItem("rooms", JSON.stringify(data));
+}
+
+export function getRoomsFromLocalStorage() {
+  const rooms = localStorage?.getItem("rooms");
+  return rooms ? JSON.parse(rooms) : [];
+}
+
+export function getRoomFromLocalStorage(id: number) {
+  const rooms = getRoomsFromLocalStorage();
+  return rooms ? rooms.find((room: any) => room.id === id) : {};
 }
