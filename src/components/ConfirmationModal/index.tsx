@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { MobileContextType, useMobileContext } from "@/contexts/MobileContext";
 
 type ConfirmationModalProps = {
   isOpen: boolean;
@@ -33,6 +34,7 @@ type ConfirmationModalProps = {
 
 function ConfirmationModal({ isOpen, onClose, room }: ConfirmationModalProps) {
   const router = useRouter();
+  const { isMobile, setIsMobile } = useMobileContext() as MobileContextType;
 
   const FormSchema = z.object({
     password: z.string().min(3, "Senha precisa ter no mínimo 3 caracteres."),
@@ -60,6 +62,7 @@ function ConfirmationModal({ isOpen, onClose, room }: ConfirmationModalProps) {
       router.push(`/room/${room.id}`);
       reset();
       onClose();
+      setIsMobile(false);
     }
   };
 

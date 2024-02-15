@@ -98,7 +98,7 @@ function RoonsList() {
               variant={"link"}
               onClick={() => {
                 router.push("/");
-                setIsCreating(!isCreating);
+                setIsMobile(false);
               }}
             >
               Home
