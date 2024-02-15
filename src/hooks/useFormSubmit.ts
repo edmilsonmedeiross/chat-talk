@@ -29,7 +29,7 @@ export const useFormSubmit = ({
   setError,
   pathName,
 }: Props) => {
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     if (pathName === "/register") {
       if (userExists(values)) {
         setError("username", {
@@ -86,7 +86,7 @@ export const useFormSubmit = ({
 
         return;
       }
-      handleLogin(values);
+      await handleLogin(values);
       router.push("/");
     }
   };
