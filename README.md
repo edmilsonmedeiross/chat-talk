@@ -1,8 +1,8 @@
 # Chat-Talk
 
-![alt text](image.png)
-
 Chat-Talk é uma aplicação de chat desenvolvida com as mais recentes tecnologias web, oferecendo uma experiência de mensagens em tempo real simulada. Este projeto foi criado com o objetivo de demonstrar a aplicação de conceitos modernos de desenvolvimento web e práticas de design de interface.
+
+![image](https://github.com/edmilsonmedeiross/chat-talk/assets/110620775/b7c90a76-5c6d-4186-9bef-175d671b3501)
 
 ## Tecnologias Utilizadas
 
